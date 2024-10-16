@@ -14,7 +14,19 @@ class FormController extends Controller{
 
         return $name."-".$email;
     }
-
+    public function index()
+    {
+        return view('form');
+    }
+    // 入力
+    public function input()
+    {
+        // Bladeで使う変数
+        $hash = array(
+            'subtitle' => '入力画面',
+        );
+        return view('contact.input')->with($hash);
+    }
 }
 
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FormController;    
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,31 +17,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form','FormController@getIndex');
-
-Route::get('/form', function () {
-    return view('form');
-});
 
 
+// Route::get('/form', function () {
+    // return view('form');
+// });
 
-Route::get('hello','HelloController@getIndex'); 
+// Route::get('form','FormController@getIndex');
 
-Route::resource('/message', 'MessageController');
+// Route::resource('/form', 'FormController');
+Route::resource('form', FormController::class);
+// Route::get('form/', 'FormController@input');
+// Route::patch('form/', 'FormController@confirm');
+
+
+# 入力画面
+Route::get('request/', [
+    'uses' => 'InsertDemoController@getIndex',
+    'as' => 'insert.index'
+  ]);
+   
+  # 確認画面
+  Route::post('request/confirm', [
+    'uses' => 'InsertDemoController@confirm',
+    'as' => 'insert.confirm'
+  ]);
 
 
 
-
-Route::get('contact/', 'ContactController@input');
-Route::patch('contact/', 'ContactController@confirm');
-
-// 入力
-public function input()
-{
-    // Bladeで使う変数
-    $hash = array(
-        'subtitle' => '入力画面',
-    );
-    return view('contact.input')->with($hash);
-}
 
