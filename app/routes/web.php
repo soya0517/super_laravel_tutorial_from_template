@@ -30,6 +30,9 @@ Route::resource('form', FormController::class);
 // Route::get('form/', 'FormController@input');
 // Route::patch('form/', 'FormController@confirm');
 
+Route::resource('test', FormController::class);
+
+
 
 # 入力画面
 Route::get('request/', [
