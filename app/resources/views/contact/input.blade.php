@@ -5,9 +5,10 @@
     </section>
 
     <section class="bg-light p-5">
-    <form action="{{ url('/contact') }}" method="post" class="needs-validation" novalidate>
-        {{ method_field('patch') }}
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <form action="{{ route('contact.confirm') }}" method="post" class="needs-validation">
+         @csrf
+         @method('PATCH')
+        
 
         <!--氏名-->
         <div class="form-row mb-4">
